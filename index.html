@@ -1,0 +1,1373 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#b91c1c">
+
+<title>POLO SHIRT SURVEY | PS021</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --red:#c91f2c;
+  --ink:#202331;
+  --muted:#737987;
+  --line:#e8eaf0;
+  --bg:#f5f6fa;
+  --green:#15803d;
+}
+
+* {
+  box-sizing:border-box;
+}
+
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Kanit',sans-serif;
+}
+
+button,input,select {
+  font:inherit;
+}
+
+.wrap {
+  max-width:950px;
+  margin:auto;
+  padding:22px 16px 50px;
+}
+
+.hero {
+  position:relative;
+  overflow:hidden;
+  border-radius:25px;
+  padding:30px;
+  color:white;
+  background:linear-gradient(
+    115deg,#a90f1b,#ef4444 65%,#fca5a5
+  );
+  box-shadow:0 14px 35px #991b1b24;
+}
+
+.hero:after {
+  content:"";
+  position:absolute;
+  width:330px;
+  height:330px;
+  border:1px solid #ffffff35;
+  border-radius:50%;
+  right:-70px;
+  top:-170px;
+  box-shadow:
+    0 0 0 28px #ffffff0c,
+    0 0 0 58px #ffffff0c;
+}
+
+.eyebrow {
+  font-size:12px;
+  letter-spacing:2px;
+  opacity:.85;
+}
+
+.hero h1 {
+  font-size:clamp(26px,5vw,40px);
+  margin:8px 0;
+}
+
+.hero p {
+  margin:0;
+  opacity:.9;
+}
+
+.hero-tag {
+  display:inline-block;
+  margin-top:18px;
+  padding:6px 13px;
+  border:1px solid #ffffff65;
+  border-radius:30px;
+  font-size:12px;
+}
+
+.layout {
+  display:grid;
+  grid-template-columns:1fr 300px;
+  gap:18px;
+  margin-top:20px;
+}
+
+.card {
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:23px;
+  box-shadow:0 5px 20px #17203308;
+}
+
+h2 {
+  font-size:20px;
+  margin:0 0 5px;
+}
+
+.sub {
+  font-size:13px;
+  color:var(--muted);
+  margin:0 0 22px;
+}
+
+.field {
+  margin:20px 0;
+}
+
+.field label {
+  display:block;
+  font-size:14px;
+  font-weight:500;
+  margin-bottom:9px;
+}
+
+select {
+  width:100%;
+  border:1px solid #dfe2e9;
+  background:#fff;
+  border-radius:12px;
+  padding:14px;
+  outline:none;
+}
+
+select:focus {
+  border-color:var(--red);
+  box-shadow:0 0 0 3px #ef44441a;
+}
+
+.hint {
+  font-size:12px;
+  color:var(--muted);
+  margin-top:7px;
+}
+
+.sizes {
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:9px;
+}
+
+.size-option {
+  padding:13px 3px;
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:11px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.size-option:hover {
+  border-color:var(--red);
+}
+
+.size-option.active {
+  background:var(--red);
+  color:white;
+  border-color:var(--red);
+  box-shadow:0 4px 12px #c91f2c30;
+}
+
+.btn {
+  border:0;
+  border-radius:12px;
+  padding:14px 18px;
+  background:var(--red);
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+  width:100%;
+  margin-top:15px;
+  transition:.2s;
+}
+
+.btn:hover {
+  background:#a71924;
+}
+
+.btn:disabled {
+  opacity:.55;
+  cursor:not-allowed;
+}
+
+.btn.secondary {
+  background:#303747;
+}
+
+.btn.small {
+  width:auto;
+  padding:8px 13px;
+  font-size:12px;
+  margin:0;
+}
+
+.status {
+  display:none;
+  margin-top:15px;
+  padding:13px;
+  border-radius:12px;
+  font-size:13px;
+}
+
+.status.ok {
+  display:block;
+  background:#ecfdf3;
+  color:#166534;
+}
+
+.status.err {
+  display:block;
+  background:#fff1f2;
+  color:#be123c;
+}
+
+.side-title {
+  font-size:15px;
+  font-weight:600;
+  margin-bottom:12px;
+}
+
+.size-table {
+  width:100%;
+  border-collapse:collapse;
+  font-size:12px;
+}
+
+.size-table th,
+.size-table td {
+  padding:10px 5px;
+  border-bottom:1px solid var(--line);
+  text-align:center;
+}
+
+.size-table th {
+  color:var(--muted);
+  font-weight:500;
+}
+
+.side-card + .side-card {
+  margin-top:15px;
+}
+
+.note {
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.8;
+}
+
+.admin-link {
+  display:block;
+  text-align:center;
+  color:var(--muted);
+  font-size:12px;
+  text-decoration:underline;
+  cursor:pointer;
+  margin-top:20px;
+}
+
+.hidden {
+  display:none!important;
+}
+
+.admin {
+  margin-top:20px;
+}
+
+.stats {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin:15px 0;
+}
+
+.stat {
+  background:#fafafa;
+  border:1px solid var(--line);
+  padding:15px;
+  border-radius:13px;
+}
+
+.stat b {
+  display:block;
+  font-size:25px;
+}
+
+.stat span {
+  font-size:12px;
+  color:var(--muted);
+}
+
+.admin-tools {
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin:15px 0;
+}
+
+.admin-tools input {
+  max-width:250px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:9px;
+}
+
+.table-wrap {
+  overflow:auto;
+}
+
+table.data {
+  border-collapse:collapse;
+  width:100%;
+  min-width:600px;
+  font-size:12px;
+}
+
+table.data th,
+table.data td {
+  padding:11px;
+  border-bottom:1px solid var(--line);
+  text-align:left;
+  white-space:nowrap;
+}
+
+table.data th {
+  background:#fafafa;
+}
+
+.bar-row {
+  display:grid;
+  grid-template-columns:65px 1fr 30px;
+  gap:8px;
+  align-items:center;
+  font-size:12px;
+  margin:10px 0;
+}
+
+.bar {
+  height:9px;
+  background:#f0f1f4;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.bar i {
+  display:block;
+  height:100%;
+  background:var(--red);
+  border-radius:10px;
+}
+
+.footer {
+  text-align:center;
+  color:#9aa0aa;
+  font-size:11px;
+  margin-top:28px;
+}
+
+@media(max-width:760px) {
+  .layout {
+    grid-template-columns:1fr;
+  }
+
+  .card {
+    padding:18px;
+  }
+
+  .hero {
+    padding:24px;
+  }
+
+  .stats {
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:380px) {
+  .sizes {
+    gap:6px;
+  }
+
+  .size-option {
+    padding:11px 1px;
+    font-size:12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+<!-- HEADER -->
+
+<header class="hero">
+
+  <div class="eyebrow">
+    POLO FASHION S · PRODUCT CODE PS021
+  </div>
+
+  <h1>POLO SHIRT SURVEY DTL#33</h1>
+
+  <p>ระบบสำรวจไซส์เสื้อโปโล UNISEX</p>
+
+  <span class="hero-tag">
+    SIZE SURVEY SYSTEM
+  </span>
+
+</header>
+
+
+<!-- SURVEY -->
+
+<main class="layout" id="surveyLayout">
+
+<section class="card">
+
+  <h2>แบบสำรวจไซส์เสื้อโปโล</h2>
+
+  <p class="sub">
+    กรุณาเลือกชื่อและไซส์เสื้อของท่าน
+    โดยสามารถส่งแบบสำรวจได้เพียง 1 ครั้ง
+  </p>
+
+  <form id="surveyForm">
+
+    <!-- MEMBER -->
+
+    <div class="field">
+
+      <label for="memberSelect">
+        1. เลือกชื่อ-นามสกุล
+        <span style="color:red">*</span>
+      </label>
+
+      <select id="memberSelect" required>
+        <option value="">กำลังโหลดรายชื่อ...</option>
+      </select>
+
+      <div class="hint" id="memberHint">
+        รายชื่อดึงจาก Google Sheets
+      </div>
+
+    </div>
+
+
+    <!-- SIZE -->
+
+    <div class="field">
+
+      <label>
+        2. เลือกไซส์เสื้อ UNISEX
+        <span style="color:red">*</span>
+      </label>
+
+      <div class="sizes" id="sizeOptions"></div>
+
+      <div class="hint">
+        กรุณาตรวจสอบขนาดรอบอกและความยาวเสื้อก่อนเลือก
+      </div>
+
+    </div>
+
+
+    <!-- SUBMIT -->
+
+    <button
+      class="btn"
+      id="submitBtn"
+      type="submit"
+    >
+      ยืนยันการส่งแบบสำรวจ
+    </button>
+
+    <div
+      class="status"
+      id="formStatus"
+      role="status"
+    ></div>
+
+  </form>
+
+  <p class="note" style="margin-top:18px">
+    หมายเหตุ: เมื่อส่งแบบสำรวจสำเร็จแล้ว
+    ระบบจะไม่อนุญาตให้ส่งซ้ำ
+    หากต้องการแก้ไขข้อมูล กรุณาติดต่อผู้ดูแลระบบ
+  </p>
+
+</section>
+
+
+<!-- SIZE TABLE -->
+
+<aside>
+
+  <section class="card side-card">
+
+    <div class="side-title">
+      ตารางขนาดเสื้อ UNISEX
+    </div>
+
+    <table class="size-table">
+
+      <thead>
+        <tr>
+          <th>ไซส์</th>
+          <th>รอบอก</th>
+          <th>เสื้อยาว</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr><td>XS</td><td>36"</td><td>25.5"</td></tr>
+        <tr><td>S</td><td>38"</td><td>26.5"</td></tr>
+        <tr><td>M</td><td>40"</td><td>27.5"</td></tr>
+        <tr><td>L</td><td>42"</td><td>28.5"</td></tr>
+        <tr><td>XL</td><td>44"</td><td>29.5"</td></tr>
+        <tr><td>2XL</td><td>46"</td><td>30"</td></tr>
+        <tr><td>3XL</td><td>48"</td><td>30.5"</td></tr>
+        <tr><td>4XL</td><td>50"</td><td>31"</td></tr>
+        <tr><td>5XL</td><td>52"</td><td>31.5"</td></tr>
+      </tbody>
+
+    </table>
+
+    <p class="note">
+      ขนาดเสื้ออาจมีความคลาดเคลื่อนประมาณ ±1 นิ้ว
+    </p>
+
+  </section>
+
+
+  <section class="card side-card">
+
+    <div class="side-title">
+      ข้อควรทราบ
+    </div>
+
+    <p class="note">
+      • เลือกชื่อจากรายชื่อที่กำหนดเท่านั้น<br>
+      • 1 รายชื่อส่งแบบสำรวจได้ 1 ครั้ง<br>
+      • ตรวจสอบไซส์ก่อนยืนยัน<br>
+      • หากส่งแล้วไม่สามารถส่งซ้ำได้
+    </p>
+
+  </section>
+
+</aside>
+
+</main>
+
+
+<!-- ADMIN DASHBOARD -->
+
+<section class="card admin hidden" id="adminPanel">
+
+  <h2>ADMIN DASHBOARD</h2>
+
+  <p class="sub">
+    ระบบจัดการและตรวจสอบผลสำรวจไซส์เสื้อ
+  </p>
+
+  <div class="admin-tools">
+
+    <input
+      id="adminToken"
+      type="password"
+      placeholder="รหัสผู้ดูแลระบบ"
+    >
+
+    <button
+      class="btn small"
+      id="adminLogin"
+    >
+      เข้าสู่ระบบ
+    </button>
+
+    <button
+      class="btn small secondary"
+      id="adminRefresh"
+    >
+      รีเฟรช
+    </button>
+
+    <button
+      class="btn small secondary"
+      id="exportCsv"
+    >
+      Export CSV
+    </button>
+
+  </div>
+
+  <div class="status" id="adminStatus"></div>
+
+  <div id="adminContent" class="hidden">
+
+    <div class="stats">
+
+      <div class="stat">
+        <b id="statPeople">0</b>
+        <span>ผู้ตอบแล้ว</span>
+      </div>
+
+      <div class="stat">
+        <b id="statPending">0</b>
+        <span>ยังไม่ตอบ</span>
+      </div>
+
+      <div class="stat">
+        <b id="statTotal">0</b>
+        <span>จำนวนผู้มีสิทธิ์</span>
+      </div>
+
+    </div>
+
+
+    <h3 style="font-size:16px">
+      สรุปจำนวนตามไซส์
+    </h3>
+
+    <div id="sizeSummary"></div>
+
+
+    <h3 style="font-size:16px;margin-top:25px">
+      รายชื่อผู้ตอบแบบสำรวจ
+    </h3>
+
+    <div class="table-wrap">
+
+      <table class="data">
+
+        <thead>
+          <tr>
+            <th>วันที่</th>
+            <th>ชื่อ-นามสกุล</th>
+            <th>หน่วยงาน</th>
+            <th>ไซส์</th>
+            <th>จัดการ</th>
+          </tr>
+        </thead>
+
+        <tbody id="responseRows"></tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<a class="admin-link" id="adminToggle">
+  สำหรับผู้ดูแลระบบ
+</a>
+
+<div class="footer">
+  POLO SHIRT SURVEY · PS021
+</div>
+
+</div>
+
+
+<script>
+
+/******************************************************
+ * CONFIGURATION
+ ******************************************************/
+
+// ใส่ URL Web App ของ Google Apps Script
+const API_URL =
+  'https://script.google.com/macros/s/AKfycbylyjAtPzRJizqedDNi602po4LFwsHdxNQjUr_BQ9bBlDMWtCaVyvPh2cL5SY5cFo9A/exec';
+
+
+/******************************************************
+ * GLOBAL VARIABLES
+ ******************************************************/
+
+let appData = null;
+let selectedSize = 'M';
+let adminToken = '';
+let adminResponses = [];
+
+const $ = id => document.getElementById(id);
+
+
+/******************************************************
+ * API GET
+ ******************************************************/
+
+async function apiGet(action, params = {}) {
+
+  const url = new URL(API_URL);
+
+  url.searchParams.set('action', action);
+
+  Object.entries(params).forEach(([k,v]) => {
+    url.searchParams.set(k,v);
+  });
+
+  const response = await fetch(url.toString());
+
+  if (!response.ok) {
+    throw new Error('เชื่อมต่อเซิร์ฟเวอร์ไม่สำเร็จ');
+  }
+
+  return response.json();
+}
+
+
+/******************************************************
+ * API POST
+ ******************************************************/
+
+async function apiPost(payload) {
+
+  const response = await fetch(API_URL, {
+
+    method:'POST',
+
+    headers:{
+      'Content-Type':'text/plain;charset=utf-8'
+    },
+
+    body:JSON.stringify(payload),
+
+    redirect:'follow'
+
+  });
+
+  if (!response.ok) {
+    throw new Error('เชื่อมต่อเซิร์ฟเวอร์ไม่สำเร็จ');
+  }
+
+  return response.json();
+}
+
+
+/******************************************************
+ * STATUS MESSAGE
+ ******************************************************/
+
+function showStatus(element,message,type) {
+
+  element.textContent = message;
+
+  element.className = 'status ' + type;
+}
+
+function clearStatus(element) {
+
+  element.textContent = '';
+
+  element.className = 'status';
+}
+
+
+/******************************************************
+ * LOAD SIZE OPTIONS
+ ******************************************************/
+
+function renderSizes(sizes) {
+
+  $('sizeOptions').innerHTML = '';
+
+  sizes.forEach(size => {
+
+    const button = document.createElement('button');
+
+    button.type = 'button';
+
+    button.className = 'size-option';
+
+    button.textContent = size;
+
+    button.addEventListener('click',() => {
+
+      selectedSize = size;
+
+      document
+        .querySelectorAll('.size-option')
+        .forEach(btn => {
+          btn.classList.toggle(
+            'active',
+            btn.textContent === selectedSize
+          );
+        });
+
+    });
+
+    $('sizeOptions').appendChild(button);
+
+  });
+
+  document
+    .querySelectorAll('.size-option')
+    .forEach(btn => {
+      btn.classList.toggle(
+        'active',
+        btn.textContent === selectedSize
+      );
+    });
+
+}
+
+
+/******************************************************
+ * LOAD MEMBERS
+ ******************************************************/
+
+function renderMembers() {
+
+  const select = $('memberSelect');
+
+  select.innerHTML =
+    '<option value="">-- เลือกชื่อของท่าน --</option>';
+
+  appData.members.forEach(member => {
+
+    const option = document.createElement('option');
+
+    option.value = member.memberId;
+
+    option.textContent =
+      member.fullName +
+      (member.department ? ' · ' + member.department : '') +
+      (member.hasResponded ? ' (ตอบแล้ว)' : '');
+
+    option.disabled = member.hasResponded;
+
+    select.appendChild(option);
+
+  });
+
+  select.onchange = () => {
+
+    const member = appData.members.find(
+      m => m.memberId === select.value
+    );
+
+    $('memberHint').textContent =
+      member?.hasResponded
+        ? 'รายชื่อนี้ส่งแบบสำรวจแล้ว'
+        : 'กรุณาตรวจสอบชื่อและหน่วยงานให้ถูกต้อง';
+
+  };
+
+}
+
+
+/******************************************************
+ * INITIALIZE WEBSITE
+ ******************************************************/
+
+async function loadApp() {
+
+  try {
+
+    if (API_URL.includes('ใส่_URL')) {
+      throw new Error(
+        'กรุณากำหนด API_URL ใน index.html ก่อนใช้งาน'
+      );
+    }
+
+    const result = await apiGet('bootstrap');
+
+    if (!result.success) {
+      throw new Error(result.message);
+    }
+
+    appData = result.data;
+
+    renderSizes(appData.sizes);
+
+    renderMembers();
+
+  } catch (error) {
+
+    $('memberSelect').innerHTML =
+      '<option value="">โหลดรายชื่อไม่สำเร็จ</option>';
+
+    showStatus(
+      $('formStatus'),
+      error.message,
+      'err'
+    );
+
+  }
+
+}
+
+
+/******************************************************
+ * SUBMIT SURVEY
+ ******************************************************/
+
+$('surveyForm').addEventListener('submit',async e => {
+
+  e.preventDefault();
+
+  clearStatus($('formStatus'));
+
+  const memberId = $('memberSelect').value;
+
+  if (!memberId) {
+
+    return showStatus(
+      $('formStatus'),
+      'กรุณาเลือกชื่อผู้ตอบแบบสำรวจ',
+      'err'
+    );
+
+  }
+
+  const member = appData.members.find(
+    m => m.memberId === memberId
+  );
+
+  if (!member || member.hasResponded) {
+
+    return showStatus(
+      $('formStatus'),
+      'รายชื่อนี้ตอบแบบสำรวจแล้ว',
+      'err'
+    );
+
+  }
+
+  const button = $('submitBtn');
+
+  button.disabled = true;
+
+  button.textContent = 'กำลังบันทึกข้อมูล...';
+
+  try {
+
+    const result = await apiPost({
+
+      action:'submit',
+
+      memberId:memberId,
+
+      size:selectedSize
+
+    });
+
+    if (!result.success) {
+      throw new Error(result.message);
+    }
+
+    member.hasResponded = true;
+
+    renderMembers();
+
+    $('surveyForm').reset();
+
+    selectedSize = 'M';
+
+    renderSizes(appData.sizes);
+
+    showStatus(
+      $('formStatus'),
+      'บันทึกสำเร็จ ขอบคุณที่ตอบแบบสำรวจ',
+      'ok'
+    );
+
+  } catch(error) {
+
+    showStatus(
+      $('formStatus'),
+      error.message,
+      'err'
+    );
+
+    // Reload status from server
+    try {
+
+      const fresh = await apiGet('bootstrap');
+
+      if (fresh.success) {
+
+        appData = fresh.data;
+
+        renderMembers();
+
+      }
+
+    } catch(_) {}
+
+  } finally {
+
+    button.disabled = false;
+
+    button.textContent = 'ยืนยันการส่งแบบสำรวจ';
+
+  }
+
+});
+
+
+/******************************************************
+ * ADMIN PANEL
+ ******************************************************/
+
+$('adminToggle').addEventListener('click',() => {
+
+  $('adminPanel').classList.toggle('hidden');
+
+  $('adminPanel').scrollIntoView({
+    behavior:'smooth',
+    block:'start'
+  });
+
+});
+
+
+$('adminLogin').addEventListener('click',() => {
+
+  adminToken = $('adminToken').value.trim();
+
+  loadAdmin();
+
+});
+
+
+$('adminRefresh').addEventListener('click',loadAdmin);
+
+
+/******************************************************
+ * ADMIN LOAD DATA
+ ******************************************************/
+
+async function loadAdmin() {
+
+  if (!adminToken) {
+
+    return showStatus(
+      $('adminStatus'),
+      'กรุณากรอกรหัสผู้ดูแลระบบ',
+      'err'
+    );
+
+  }
+
+  try {
+
+    const [dashboard,rows] = await Promise.all([
+
+      apiGet('adminDashboard',{
+        token:adminToken
+      }),
+
+      apiGet('adminResponses',{
+        token:adminToken
+      })
+
+    ]);
+
+    if (!dashboard.success) {
+      throw new Error(dashboard.message);
+    }
+
+    if (!rows.success) {
+      throw new Error(rows.message);
+    }
+
+    adminResponses = rows.data.responses;
+
+    renderDashboard(dashboard.data);
+
+    renderResponseRows();
+
+    $('adminContent').classList.remove('hidden');
+
+    showStatus(
+      $('adminStatus'),
+      'เข้าสู่ระบบผู้ดูแลสำเร็จ',
+      'ok'
+    );
+
+  } catch(error) {
+
+    $('adminContent').classList.add('hidden');
+
+    showStatus(
+      $('adminStatus'),
+      error.message,
+      'err'
+    );
+
+  }
+
+}
+
+
+/******************************************************
+ * DASHBOARD
+ ******************************************************/
+
+function renderDashboard(data) {
+
+  $('statPeople').textContent = data.totalPeople;
+
+  $('statPending').textContent = data.pendingCount;
+
+  $('statTotal').textContent = data.memberCount;
+
+  const max = Math.max(
+    1,
+    ...data.sizeSummary.map(x => x.quantity)
+  );
+
+  $('sizeSummary').innerHTML =
+    data.sizeSummary.map(item => `
+
+      <div class="bar-row">
+
+        <span>${item.size}</span>
+
+        <div class="bar">
+          <i style="width:${item.quantity/max*100}%"></i>
+        </div>
+
+        <b>${item.quantity}</b>
+
+      </div>
+
+    `).join('');
+
+}
+
+
+/******************************************************
+ * RESPONSE TABLE
+ ******************************************************/
+
+function escapeHtml(value) {
+
+  return String(value ?? '').replace(
+    /[&<>"']/g,
+    c => ({
+      '&':'&amp;',
+      '<':'&lt;',
+      '>':'&gt;',
+      '"':'&quot;',
+      "'":'&#39;'
+    }[c])
+  );
+
+}
+
+
+function renderResponseRows() {
+
+  $('responseRows').innerHTML =
+    adminResponses.map(r => `
+
+      <tr>
+
+        <td>${escapeHtml(r.timestamp)}</td>
+
+        <td>${escapeHtml(r.fullName)}</td>
+
+        <td>${escapeHtml(r.department)}</td>
+
+        <td><b>${escapeHtml(r.size)}</b></td>
+
+        <td>
+
+          <button
+            class="btn small secondary"
+            onclick="editRow('${r.responseId}')"
+          >
+            แก้ไข
+          </button>
+
+          <button
+            class="btn small"
+            style="background:#991b1b"
+            onclick="deleteRow('${r.responseId}')"
+          >
+            ลบ
+          </button>
+
+        </td>
+
+      </tr>
+
+    `).join('');
+
+}
+
+
+/******************************************************
+ * ADMIN EDIT
+ ******************************************************/
+
+async function editRow(id) {
+
+  const row = adminResponses.find(
+    r => r.responseId === id
+  );
+
+  if (!row) return;
+
+  const size = prompt(
+    'กรอกไซส์ใหม่\n' +
+    appData.sizes.join(', '),
+    row.size
+  );
+
+  if (size === null) return;
+
+  try {
+
+    const result = await apiPost({
+
+      action:'adminUpdate',
+
+      token:adminToken,
+
+      responseId:id,
+
+      size:size
+
+    });
+
+    if (!result.success) {
+      throw new Error(result.message);
+    }
+
+    await loadAdmin();
+
+    alert('แก้ไขข้อมูลเรียบร้อยแล้ว');
+
+  } catch(error) {
+
+    alert(error.message);
+
+  }
+
+}
+
+
+/******************************************************
+ * ADMIN DELETE
+ ******************************************************/
+
+async function deleteRow(id) {
+
+  if (!confirm(
+    'ยืนยันลบรายการนี้หรือไม่? ' +
+    'เมื่อลบแล้วรายชื่อนี้จะสามารถส่งแบบสำรวจใหม่ได้'
+  )) return;
+
+  try {
+
+    const result = await apiPost({
+
+      action:'adminDelete',
+
+      token:adminToken,
+
+      responseId:id
+
+    });
+
+    if (!result.success) {
+      throw new Error(result.message);
+    }
+
+    await loadAdmin();
+
+    alert('ลบรายการเรียบร้อยแล้ว');
+
+  } catch(error) {
+
+    alert(error.message);
+
+  }
+
+}
+
+
+/******************************************************
+ * EXPORT CSV
+ ******************************************************/
+
+$('exportCsv').addEventListener('click',() => {
+
+  if (!adminResponses.length) {
+
+    alert('ไม่มีข้อมูลสำหรับส่งออก');
+
+    return;
+
+  }
+
+  const headers = [
+    'วันที่',
+    'รหัสสมาชิก',
+    'ชื่อ-นามสกุล',
+    'หน่วยงาน',
+    'ไซส์'
+  ];
+
+  const rows = adminResponses.map(r => [
+    r.timestamp,
+    r.memberId,
+    r.fullName,
+    r.department,
+    r.size
+  ]);
+
+  const csv = '\uFEFF' +
+    [headers,...rows]
+      .map(row =>
+        row.map(v =>
+          '"' + String(v ?? '').replace(/"/g,'""') + '"'
+        ).join(',')
+      )
+      .join('\r\n');
+
+  const blob = new Blob(
+    [csv],
+    {type:'text/csv;charset=utf-8;'}
+  );
+
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement('a');
+
+  a.href = url;
+
+  a.download = 'PS021_Size_Survey.csv';
+
+  a.click();
+
+  URL.revokeObjectURL(url);
+
+});
+
+
+/******************************************************
+ * START
+ ******************************************************/
+
+loadApp();
+
+</script>
+
+</body>
+</html>
